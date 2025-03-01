@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Forecast & Recommendations</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='forecast.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="forecast">
+        <h2>
+          Forecasted Prices for {{ crop }} in {{ district }} for Next 3 Months
+        </h2>
+        <ul>
+          {% for price in forecasted_prices %}
+          <li>&#8377; {{ price }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <div class="recommendation">
+        <h2>Top Recommended Crops in {{ district }}</h2>
+        <ul>
+          {% for crop, price in recommended_crops %}
+          <li>{{ crop }} - &#8377; {{ price }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    <a href="/">Go Back</a>
+    <p class="info">All data provided are in measures per quintal</p>
+  </body>
+</html>
